@@ -273,12 +273,12 @@ if __name__ == "__main__":
     print_config_summary()
     print("\nCreating all directories...")
     ensure_directories()
-    print("✓ All directories created successfully")
+    print("[OK] All directories created successfully")
 
     if not validate_dataset_exists():
-        print("\n⚠ WARNING: Dataset file not found!")
+        print("\n[WARNING] Dataset file not found!")
         print(f"   Expected location: {DATASET_PATH}")
         print("   USER ACTION REQUIRED: Copy c5_Matrix.csv to data/raw/")
         print("   See README.md section 'Data Setup' for instructions.")
     else:
-        print(f"\n✓ Dataset file found at {DATASET_PATH}")
+        print(f"\n[OK] Dataset file found at {DATASET_PATH}")
