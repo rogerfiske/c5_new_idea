@@ -29,11 +29,13 @@ Usage Example:
     quantum_state = imputer.impute(binary_vector)
 """
 
-__all__ = [
-    # Base class (to be implemented in Epic 2)
-    # "BaseImputer",
+from src.imputation.base_imputer import BaseImputer
 
-    # Five imputation methods (to be implemented in Epic 2, Stories 2.1-2.6)
+__all__ = [
+    # Base class (Epic 2, Story 2.1)
+    "BaseImputer",
+
+    # Five imputation methods (to be implemented in Epic 2, Stories 2.2-2.6)
     # "BasisEmbedding",
     # "AmplitudeEmbedding",
     # "AngleEncoding",
