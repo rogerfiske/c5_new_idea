@@ -135,6 +135,81 @@ python src/main.py --run-all-experiments
 3. **Commit changes** following guidelines in CONTRIBUTING.md
 4. **Document** updates in relevant reports
 
+## Testing
+
+This project uses pytest for comprehensive testing. All code changes should include corresponding tests.
+
+### Running Tests
+
+**Run all tests:**
+```bash
+pytest
+```
+
+**Run with verbose output:**
+```bash
+pytest -v
+```
+
+**Run specific test file:**
+```bash
+pytest tests/unit/test_data_loader.py
+```
+
+**Run tests by marker:**
+```bash
+pytest -m unit          # Run only unit tests
+pytest -m integration   # Run only integration tests
+pytest -m "not slow"    # Skip slow tests
+```
+
+### Test Structure
+
+```
+tests/
+├── unit/              # Unit tests for individual functions/modules
+│   └── test_data_loader.py
+├── integration/       # Integration tests across multiple modules
+└── fixtures/          # Test data files
+    ├── sample_valid_dataset.csv
+    ├── sample_invalid_columns.csv
+    ├── sample_invalid_values.csv
+    └── sample_missing_values.csv
+```
+
+### Test Markers
+
+Tests are categorized using pytest markers:
+
+- `@pytest.mark.unit` - Fast tests for individual functions
+- `@pytest.mark.integration` - Tests spanning multiple modules
+- `@pytest.mark.slow` - Tests that take more than a few seconds
+- `@pytest.mark.data` - Tests requiring data files
+
+### Writing New Tests
+
+1. **Create test files** in `tests/unit/` or `tests/integration/` following the `test_*.py` naming pattern
+2. **Use fixtures** for reusable test data (see existing fixtures in `tests/fixtures/`)
+3. **Add docstrings** explaining what each test validates
+4. **Use markers** to categorize tests:
+   ```python
+   @pytest.mark.unit
+   def test_my_function():
+       """Test that my_function returns expected output."""
+       assert my_function(input) == expected_output
+   ```
+
+### Test Coverage
+
+Current test coverage:
+- **Data Loading & Validation**: 11 test cases covering all functions in `src/data_loader.py`
+
+### Continuous Testing
+
+- Tests run automatically on every commit (if CI/CD is configured)
+- All tests must pass before merging to main branch
+- See `pytest.ini` for detailed test configuration
+
 ## Key Configuration
 
 All file paths are managed centrally in `src/config.py`. Modify this file if you need to change directory locations.
