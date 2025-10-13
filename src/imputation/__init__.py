@@ -32,6 +32,7 @@ Usage Example:
 from src.imputation.base_imputer import BaseImputer
 from src.imputation.basis_embedding import BasisEmbedding
 from src.imputation.amplitude_embedding import AmplitudeEmbedding
+from src.imputation.angle_encoding import AngleEncoding
 
 __all__ = [
     # Base class (Epic 2, Story 2.1)
@@ -40,7 +41,7 @@ __all__ = [
     # Five imputation methods (Epic 2, Stories 2.2-2.6)
     "BasisEmbedding",  # Story 2.2 ✅
     "AmplitudeEmbedding",  # Story 2.3 ✅
-    # "AngleEncoding",
+    "AngleEncoding",  # Story 2.4 ✅
     # "DensityMatrixEmbedding",
     # "GraphCycleEncoding",
 ]
