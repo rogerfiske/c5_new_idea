@@ -1,4 +1,4 @@
-# Quantum State Prediction Experiment Product Requirements Document (PRD) - v1.3
+# Quantum State Prediction Experiment Product Requirements Document (PRD) - v1.4
 
 ## 1. Goals and Background Context
 
@@ -18,6 +18,7 @@ This project is an experimental endeavor to explore the intersection of quantum 
 | 2025-10-10 | 1.1 | Incorporated specific imputation strategies and model families into Epics 2, 3, and 6. | BMad PM |
 | 2025-10-10 | 1.2 | PO validation fixes: Added Story 1.4 (testing infrastructure), git initialization to Story 1.1, dataset initialization instructions, comprehensive error handling, explicit documentation requirements (NFR2), Epic 5 dependency clarification, performance tracking in Story 5.3. | Sarah (PO) |
 | 2025-10-12 | 1.3 | Major restructuring for 5 Assignment/Imputation method experiments: (1) Added all 5 methods to Epic 2 (including missing Density Matrix Embedding), (2) Fixed naming consistency (Amplitude Embedding), (3) Restructured Epic 5 to run 5 sequential sub-experiments (one per imputation method) with comparative analysis, (4) Added Epic 7 for final production run using best method to achieve macro objective. | Sarah (PO) |
+| 2025-10-13 | 1.4 | Post-Epic 2 PO validation: (1) Clarified Epic 6 → Epic 7 dependency (Epic 6 is OPTIONAL), (2) Added performance profiling requirements to Epic 3-4, (3) Updated Story 3.3 and 3.6 to include basic timing for RunPod decisions. | Sarah (PO) |
 
 ---
 
@@ -143,19 +144,22 @@ This project is an experimental endeavor to explore the intersection of quantum 
         * Create ranker class with hyperparameter configuration support
         * Include detailed docstrings and inline comments explaining feature engineering
         * Write unit tests for GBDT ranker
-        * **Acceptance Criteria**: Ranker trains successfully, produces valid predictions, code is heavily commented (per NFR2), tests pass
+        * **Performance Profiling**: Track and log training time using `time.time()` wrappers to inform RunPod usage decisions (per NFR1)
+        * **Acceptance Criteria**: Ranker trains successfully, produces valid predictions, training time logged, code is heavily commented (per NFR2), tests pass
     * **3.4**: Implement a **Set-Based Ranker** using a DeepSets or light Set Transformer architecture.
         * Create ranker class following consistent interface
         * Document architecture choices and hyperparameters in docstrings
         * Write unit tests for set-based ranker
+        * **Performance Profiling**: Track and log training time (per epoch and total) to inform RunPod usage decisions (per NFR1)
         * **Error Handling**: Handle training divergence, invalid input shapes, GPU/CPU compatibility issues
-        * **Acceptance Criteria**: Model trains successfully, produces valid predictions, code is heavily commented (per NFR2), tests pass
+        * **Acceptance Criteria**: Model trains successfully, produces valid predictions, training time logged, code is heavily commented (per NFR2), tests pass
     * **3.5**: Implement a **Graph-Based Ranker** using a simple GNN or DFT over the ring C₃₉.
         * Create ranker class following consistent interface
         * Document graph construction and GNN architecture in docstrings
         * Write unit tests for graph-based ranker
+        * **Performance Profiling**: Track and log training time (per epoch and total) to inform RunPod usage decisions (per NFR1)
         * **Error Handling**: Handle training divergence, invalid graph construction, dependency issues (PyTorch Geometric)
-        * **Acceptance Criteria**: Model trains successfully, produces valid predictions, code is heavily commented (per NFR2), tests pass
+        * **Acceptance Criteria**: Model trains successfully, produces valid predictions, training time logged, code is heavily commented (per NFR2), tests pass
     * **3.6**: Create a unified training script that can train any selected ranker model on a given imputed dataset and save the artifact.
         * Accept parameters: ranker type, imputed data path, hyperparameters, output path
         * Load data, instantiate selected ranker, train model, save artifact to `models/`
@@ -185,11 +189,12 @@ This project is an experimental endeavor to explore the intersection of quantum 
         * **Acceptance Criteria**: Metric calculates correctly, handles edge cases, code is well-documented (per NFR2), tests pass
     * **4.3**: Implement the detailed metrics collection system to log performance data during the holdout test.
         * Log prediction probabilities, feature importance (if available), intermediate states
+        * Log prediction timing: time per sample, total prediction time (for RunPod usage decisions per NFR1)
         * Save detailed metrics to structured format (JSON or CSV) in `reports/`
         * Include timestamps, model identifiers, hyperparameters in logs
         * Document the logging schema clearly
         * **Error Handling**: Handle logging failures gracefully (don't crash evaluation), manage disk space issues
-        * **Acceptance Criteria**: Comprehensive metrics logged, logs are structured and parseable, code is well-documented (per NFR2)
+        * **Acceptance Criteria**: Comprehensive metrics logged (including timing), logs are structured and parseable, code is well-documented (per NFR2)
     * **4.4**: Create the script that generates the final `HOLDOUT TEST SUMMARY` text file in the specified format.
         * Load detailed metrics from Story 4.3
         * Generate formatted summary report matching user-specified format
@@ -285,7 +290,7 @@ This project is an experimental endeavor to explore the intersection of quantum 
 
 ### Epic 7: Final Production Run with Best Method
 * **Goal**: Execute the final production prediction run using the best-performing imputation method identified in Epic 5, apply ensemble techniques if beneficial, and generate the definitive "20 most likely values" prediction for the next event to achieve the project's macro objective.
-* **Dependencies**: Requires completion of Epic 5 (Story 5.7 comparative analysis with method recommendation) and Epic 6 (ensemble methods)
+* **Dependencies**: Requires completion of Epic 5 (Story 5.7 comparative analysis with method recommendation). Epic 6 (ensemble methods) is OPTIONAL - if Epic 5 experiments show that a single best model outperforms ensembles, Epic 7 may proceed directly with that model, bypassing Epic 6.
 * **Critical Context**: This epic represents the culmination of all experimental work. The best imputation method has been scientifically selected through rigorous comparison, and we now apply it to produce the final actionable prediction.
 * **Stories**:
     * **7.1**: Prepare the production dataset using the best imputation method from Epic 5.
