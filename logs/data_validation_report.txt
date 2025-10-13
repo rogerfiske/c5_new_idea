@@ -1,0 +1,55 @@
+DATA VALIDATION REPORT
+======================
+Date: 2025-10-13
+Dataset: data/raw/c5_Matrix.csv
+Dataset Size: 973514 bytes (950.7 KB)
+
+STRUCTURE VALIDATION
+--------------------
+Rows: 11581
+Columns: 40
+Expected Columns: 40 (event-ID, QV_1-39)
+Column Names Match: Yes
+Data Types Valid: Yes
+Missing Values: 0
+
+INTEGRITY VALIDATION
+--------------------
+Event_ID Sequential: Yes
+Event_ID Range: 1 to 11581
+Event_ID Duplicates: No
+QS Values in Range (1-39): N/A (QS columns not present in dataset)
+QV Values Binary (0 or 1): Yes
+QV Sum = 5 per row: Yes
+
+FINDINGS & OBSERVATIONS
+-----------------------
+- Dataset contains 11,581 events (rows)
+- Each event has 39 binary quantum value indicators (QV_1 through QV_39)
+- All events satisfy the "exactly 5 active positions" constraint
+- Event IDs are sequential from 1 to 11581 with no gaps
+- No missing values detected in the dataset
+- All QV columns contain only binary values (0 or 1)
+- Data types are appropriate: event-ID is integer, all QV columns are integer
+
+DATASET STRUCTURE NOTES
+-----------------------
+The actual dataset structure differs from initial specifications:
+- PRESENT: event-ID (1 column), QV_1 through QV_39 (39 columns) = 40 total
+- NOT PRESENT: Timestamp column, QS_1 through QS_5 columns
+- This is a simplified structure containing only the binary vector representation
+- The absence of QS columns means quantum states are represented solely by the
+  binary QV vectors (where exactly 5 of 39 positions are active)
+
+RECOMMENDATION
+--------------
+Dataset is READY for downstream processing.
+
+The dataset successfully passes all validation checks:
+[OK] Correct structure (40 columns as expected in actual data)
+[OK] Complete data (no missing values)
+[OK] Valid event ID sequencing
+[OK] Binary QV values only
+[OK] Quantum state constraint satisfied (sum = 5 per row)
+
+Next steps: Proceed to Story 1.3 (Preprocessing Pipeline)
