@@ -33,6 +33,7 @@ from src.imputation.base_imputer import BaseImputer
 from src.imputation.basis_embedding import BasisEmbedding
 from src.imputation.amplitude_embedding import AmplitudeEmbedding
 from src.imputation.angle_encoding import AngleEncoding
+from src.imputation.density_matrix import DensityMatrixEmbedding
 from src.imputation.graph_cycle_encoding import GraphCycleEncoding
 
 __all__ = [
@@ -43,6 +44,6 @@ __all__ = [
     "BasisEmbedding",  # Story 2.2 ✅
     "AmplitudeEmbedding",  # Story 2.3 ✅
     "AngleEncoding",  # Story 2.4 ✅
-    # "DensityMatrixEmbedding",  # Story 2.5 (most complex)
+    "DensityMatrixEmbedding",  # Story 2.5 ✅
     "GraphCycleEncoding",  # Story 2.6 ✅
 ]
