@@ -30,13 +30,14 @@ Usage Example:
 """
 
 from src.imputation.base_imputer import BaseImputer
+from src.imputation.basis_embedding import BasisEmbedding
 
 __all__ = [
     # Base class (Epic 2, Story 2.1)
     "BaseImputer",
 
-    # Five imputation methods (to be implemented in Epic 2, Stories 2.2-2.6)
-    # "BasisEmbedding",
+    # Five imputation methods (Epic 2, Stories 2.2-2.6)
+    "BasisEmbedding",  # Story 2.2 ✅
     # "AmplitudeEmbedding",
     # "AngleEncoding",
     # "DensityMatrixEmbedding",
