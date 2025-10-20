@@ -1,0 +1,70 @@
+{
+  "draw_number": 11582,
+  "actual_results": [
+    26,
+    30,
+    37,
+    38,
+    39
+  ],
+  "model_performance": [
+    {
+      "model": "lgbm",
+      "hits": [
+        26
+      ],
+      "hit_count": 1,
+      "misses": [
+        30,
+        37,
+        38,
+        39
+      ],
+      "miss_count": 4,
+      "recall_at_20": 0.2,
+      "hit_ranks": {
+        "26": 4
+      }
+    },
+    {
+      "model": "settransformer",
+      "hits": [
+        26,
+        38
+      ],
+      "hit_count": 2,
+      "misses": [
+        30,
+        37,
+        39
+      ],
+      "miss_count": 3,
+      "recall_at_20": 0.4,
+      "hit_ranks": {
+        "26": 4,
+        "38": 14
+      }
+    },
+    {
+      "model": "gnn",
+      "hits": [
+        26,
+        37,
+        39
+      ],
+      "hit_count": 3,
+      "misses": [
+        30,
+        38
+      ],
+      "miss_count": 2,
+      "recall_at_20": 0.6,
+      "hit_ranks": {
+        "26": 4,
+        "37": 6,
+        "39": 7
+      }
+    }
+  ],
+  "timestamp": "2025-10-15T15:59:19.111843"
+}

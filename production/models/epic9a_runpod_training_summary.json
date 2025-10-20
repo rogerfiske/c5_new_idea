@@ -1,0 +1,83 @@
+{
+  "epic": "9A - Alternative Imputation Testing",
+  "timestamp": "2025-10-17T17:49:11.743769",
+  "gpu_used": true,
+  "gpu_name": "NVIDIA H200",
+  "total_events": 11581,
+  "results": {
+    "amplitude_embedding": {
+      "settransformer": {
+        "model_type": "settransformer",
+        "imputation_method": "amplitude_embedding",
+        "training_events": 11581,
+        "training_time_seconds": 133.65343832969666,
+        "hyperparameters": {
+          "d_model": 128,
+          "num_heads": 4,
+          "num_encoder_layers": 2,
+          "num_inducing_points": 16,
+          "dropout": 0.1,
+          "epochs": 50,
+          "batch_size": 32,
+          "learning_rate": 0.001,
+          "device": "cuda"
+        },
+        "model_path": "production/models/amplitude/settransformer_ranker.pth"
+      },
+      "gnn": {
+        "model_type": "gnn",
+        "imputation_method": "amplitude_embedding",
+        "training_events": 11581,
+        "training_time_seconds": 79.09990954399109,
+        "hyperparameters": {
+          "d_model": 128,
+          "num_heads": 4,
+          "num_gat_layers": 3,
+          "dropout": 0.1,
+          "epochs": 50,
+          "batch_size": 32,
+          "learning_rate": 0.001,
+          "device": "cuda"
+        },
+        "model_path": "production/models/amplitude/gnn_ranker.pth"
+      }
+    },
+    "density_matrix": {
+      "settransformer": {
+        "model_type": "settransformer",
+        "imputation_method": "density_matrix",
+        "training_events": 11581,
+        "training_time_seconds": 131.40830254554749,
+        "hyperparameters": {
+          "d_model": 128,
+          "num_heads": 4,
+          "num_encoder_layers": 2,
+          "num_inducing_points": 16,
+          "dropout": 0.1,
+          "epochs": 50,
+          "batch_size": 32,
+          "learning_rate": 0.001,
+          "device": "cuda"
+        },
+        "model_path": "production/models/density_matrix/settransformer_ranker.pth"
+      },
+      "gnn": {
+        "model_type": "gnn",
+        "imputation_method": "density_matrix",
+        "training_events": 11581,
+        "training_time_seconds": 78.34498882293701,
+        "hyperparameters": {
+          "d_model": 128,
+          "num_heads": 4,
+          "num_gat_layers": 3,
+          "dropout": 0.1,
+          "epochs": 50,
+          "batch_size": 32,
+          "learning_rate": 0.001,
+          "device": "cuda"
+        },
+        "model_path": "production/models/density_matrix/gnn_ranker.pth"
+      }
+    }
+  }
+}

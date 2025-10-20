@@ -1,0 +1,71 @@
+{
+  "epic": "Epic 7 - Final Production Run",
+  "story": "7.2 - Retrain Models on Full Dataset",
+  "production_dataset": {
+    "events": 11581,
+    "imputation_strategy": "angle_encoding",
+    "features": 123
+  },
+  "models_trained": [
+    "settransformer",
+    "gnn"
+  ],
+  "results": {
+    "settransformer": {
+      "training": {
+        "model_type": "settransformer",
+        "training_events": 11581,
+        "training_time_seconds": 99.2744619846344,
+        "hyperparameters": {
+          "d_model": 128,
+          "num_heads": 4,
+          "num_encoder_layers": 2,
+          "num_inducing_points": 16,
+          "dropout": 0.1,
+          "epochs": 50,
+          "batch_size": 32,
+          "learning_rate": 0.001,
+          "device": "cuda"
+        },
+        "model_path": "production/models/settransformer_ranker.pth"
+      },
+      "validation": {
+        "validation_status": "PASS",
+        "recall_at_20": 1.0,
+        "epic5_baseline_recall": 1.0,
+        "recall_improvement": 0.0,
+        "extremes_percentage": 0.0,
+        "perfect_count": 0,
+        "total_events": 1000
+      }
+    },
+    "gnn": {
+      "training": {
+        "model_type": "gnn",
+        "training_events": 11581,
+        "training_time_seconds": 79.73819017410278,
+        "hyperparameters": {
+          "d_model": 128,
+          "num_heads": 4,
+          "num_gat_layers": 3,
+          "dropout": 0.1,
+          "epochs": 50,
+          "batch_size": 32,
+          "learning_rate": 0.001,
+          "device": "cuda"
+        },
+        "model_path": "production/models/gnn_ranker.pth"
+      },
+      "validation": {
+        "validation_status": "PASS",
+        "recall_at_20": 1.0,
+        "epic5_baseline_recall": 1.0,
+        "recall_improvement": 0.0,
+        "extremes_percentage": 0.0,
+        "perfect_count": 0,
+        "total_events": 1000
+      }
+    }
+  },
+  "timestamp": "2025-10-15T22:33:24.017728"
+}

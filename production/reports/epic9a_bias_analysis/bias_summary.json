@@ -1,0 +1,20 @@
+{
+  "angle_encoding": {
+    "low_bias_avg": 336.1382113821138,
+    "mid_bias_avg": 320.6137694326671,
+    "high_bias_avg": 245.40667056758335,
+    "overall_bias": 300.71955046078807
+  },
+  "amplitude_embedding": {
+    "low_bias_avg": 221.4358348586537,
+    "mid_bias_avg": 367.61673741661616,
+    "high_bias_avg": 310.11521187268113,
+    "overall_bias": 299.7225947159837
+  },
+  "density_matrix": {
+    "low_bias_avg": 203.90243902439025,
+    "mid_bias_avg": 365.6571774682011,
+    "high_bias_avg": 328.7887653598596,
+    "overall_bias": 299.4494606174837
+  }
+}

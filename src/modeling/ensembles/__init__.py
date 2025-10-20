@@ -1,25 +1,22 @@
 """
-Ensemble Methods Sub-Module
+Ensemble Methods for Quantum State Prediction
 
-This sub-module contains ensemble methods for combining predictions
-from multiple ranking models.
+This module contains ensemble methods for combining multiple ranker predictions
+to improve prediction robustness and accuracy.
 
-Ensemble Strategies (Epic 6 - Optional):
-1. Reciprocal Rank Fusion (rrf.py)
-   - Combines rankings from multiple models using RRF algorithm
+Epic 9B implements simple ensemble approaches that aggregate predictions from
+multiple trained models (LGBM, SetTransformer, GNN) to leverage their complementary
+strengths.
 
-2. Weighted Average (weighted_average.py)
-   - Weighted combination of model predictions based on performance
+Classes:
+    SimpleEnsemble: Equal-weighted or confidence-weighted ensemble
+    RangeAwareBiasCorrection: Range-aware bias correction layer
 
-Usage Example:
-    from src.modeling.ensembles.rrf import ReciprocalRankFusion
-
-    ensemble = ReciprocalRankFusion(models=[model1, model2, model3])
-    combined_predictions = ensemble.predict(X_test)
+Author: BMad Dev Agent (James)
+Date: 2025-10-17
+Epic: Epic 9B - Ensemble & Bias Correction
 """
 
-__all__ = [
-    # To be populated if Epic 6 is implemented
-    # "ReciprocalRankFusion",
-    # "WeightedAverageEnsemble",
-]
+from .simple_ensemble import SimpleEnsemble
+
+__all__ = ['SimpleEnsemble']

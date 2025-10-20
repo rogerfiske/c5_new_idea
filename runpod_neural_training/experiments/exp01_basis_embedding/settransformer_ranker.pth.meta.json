@@ -1,0 +1,25 @@
+{
+  "ranker_type": "set_transformer",
+  "pytorch_version": "2.8.0+cu128",
+  "hyperparameters": {
+    "d_model": 128,
+    "num_heads": 4,
+    "num_inds": 16,
+    "num_encoder_layers": 2,
+    "dim_feedforward": 256,
+    "num_seeds": 1,
+    "learning_rate": 0.0001,
+    "batch_size": 32,
+    "epochs": 100,
+    "early_stopping_patience": 10,
+    "dropout": 0.1,
+    "weight_decay": 1e-05,
+    "device": "cuda"
+  },
+  "training_time_seconds": 205.64495158195496,
+  "total_epochs_trained": 77,
+  "best_epoch": 67,
+  "best_val_loss": 1.2827442116590414e-05,
+  "final_train_loss": 0.0007481703225872712,
+  "timestamp": "2025-10-15T19:51:55.932114"
+}

@@ -1,0 +1,33 @@
+{
+  "evaluation_date": "2025-10-17T12:37:37.302051",
+  "epic": "Epic 9B - Ensemble & Bias Correction",
+  "story": "9B.1 - Simple Ensemble Implementation",
+  "holdout_size": 1000,
+  "individual_models": [
+    {
+      "model_name": "LGBM",
+      "recall_at_20": 1.0,
+      "perfect_recall_count": 1000,
+      "perfect_recall_pct": 100.0
+    },
+    {
+      "model_name": "SetTransformer",
+      "recall_at_20": 1.0,
+      "perfect_recall_count": 1000,
+      "perfect_recall_pct": 100.0
+    },
+    {
+      "model_name": "GNN",
+      "recall_at_20": 1.0,
+      "perfect_recall_count": 1000,
+      "perfect_recall_pct": 100.0
+    }
+  ],
+  "ensemble": {
+    "model_name": "SimpleEnsemble (equal weights)",
+    "recall_at_20": 1.0,
+    "perfect_recall_count": 1000,
+    "perfect_recall_pct": 100.0,
+    "weighting_strategy": "equal"
+  }
+}

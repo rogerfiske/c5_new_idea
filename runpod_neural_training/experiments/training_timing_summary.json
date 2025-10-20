@@ -1,0 +1,6 @@
+{
+  "experiments_completed": 5,
+  "total_models": 10,
+  "device": "cuda",
+  "gpu_name": "NVIDIA H200"
+}
